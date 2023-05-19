@@ -1,19 +1,26 @@
 package com.jsp.PWApp.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class User {
+public class Account {
+	
 	@Id
 	private int id;
-	private String name;
-	private long phno;
-	private String email;
-	private String password;
-	@OneToOne(mappedBy ="user")
-	private Account account;
+	private long accNo;
+	private double minBal;
+	private double intialBal;
+	private double ammount;
+	
+	@OneToOne
+	@JoinColumn
+	@JsonIgnore
+	private User user;
 	
 	
 	public int getId() {
@@ -22,36 +29,37 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public long getAccNo() {
+		return accNo;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAccNo(long accNo) {
+		this.accNo = accNo;
 	}
-	public long getPhno() {
-		return phno;
+	public double getMinBal() {
+		return minBal;
 	}
-	public void setPhno(long phno) {
-		this.phno = phno;
+	public void setMinBal(double minBal) {
+		this.minBal = minBal;
 	}
-	public String getEmail() {
-		return email;
+	public double getIntialBal() {
+		return intialBal;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setIntialBal(double intialBal) {
+		this.intialBal = intialBal;
 	}
-	public String getPassword() {
-		return password;
+	public double getAmmount() {
+		return ammount;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAmmount(double ammount) {
+		this.ammount = ammount;
 	}
-	public Account getAccount() {
-		return account;
+	public User getUser() {
+		return user;
 	}
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	
+
 }
